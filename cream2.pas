@@ -1,0 +1,54 @@
+type
+        km=array[1..100000000] of int64;
+var
+    n,m,t,d:int64;
+        i,j,max:longint;
+        A,B:km;
+{--------------------------------------------------------------}
+ procedure sort(var C:km; l,r: longint);
+      var
+         i,j,x,y: longint;
+      begin
+         i:=l;
+         j:=r;
+         x:=C[(l+r) div 2];
+         repeat
+           while C[i]<x do
+            inc(i);
+           while x<C[j] do
+            dec(j);
+           if not(i>j) then
+             begin
+                y:=C[i];
+                C[i]:=C[j];
+                C[j]:=y;
+                inc(i);
+                j:=j-1;
+             end;
+         until i>j;
+         if l<j then
+           sort(C,l,j);
+         if i<r then
+           sort(C,i,r);
+      end;
+{----------------------------------------------------------}
+Begin
+                readln(n);
+                for i:=1 to n do
+                        read(A[i]);
+                for j:=1 to n do read(B[j]);
+                d:=0;  i:=1; j:=1;
+        while i<= n  do
+                                begin
+                                         if (A[i]>B[j]) then
+                                                begin
+                                                         inc(d);
+                                                         inc(i);
+                                                         inc(j);
+                                                end
+                                         else inc(i);
+
+                                end;
+                write(d);
+
+end.
