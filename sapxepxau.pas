@@ -1,6 +1,5 @@
 
 var a,b:array[0..256] of string;
-     e:tlist;
     ch:char;
     tam,tamc,tams:string;
     i,n,j,max,k,vt,d,h:longint;
@@ -26,25 +25,12 @@ begin
         readln(f1,n);
         for i:=1 to n do
                 readln(f1,a[i]);
-       for i:=1 to n do
-                begin
-                        d:=0;
-                        tam:=a[i];
-                        for h:=1 to length(tam) do
-                                if tam[h] in ['0'..'9'] then
-                                        begin
-                                                inc(d);
-
-                                        end;
-                         e[i]:=d;
-                end;
        //sort(e);
         for i:=1 to n-1 do
                 for j:=i+1 to n do
-                        if e[i]>e[j] then
+                        if  length(a[i])>length(a[j]) then
                                 begin
                                         dc(a[i],a[j]);
-                                        sx(e[i],e[j]);
                                 end;
         for i:=1 to n do
         writeln(f2,a[i]);
